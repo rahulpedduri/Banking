@@ -1,0 +1,99 @@
+
+SQL> desc application_form
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ APPLICATION_NO                            NOT NULL NUMBER(10)
+ FIRST_NAME                                         VARCHAR2(25)
+ LAST_NAME                                          VARCHAR2(20)
+ DOB                                                DATE
+ ADDRESS                                            VARCHAR2(50)
+ EMAIL                                              VARCHAR2(40)
+ PHONE                                              VARCHAR2(15)
+ USERNAME                                           VARCHAR2(25)
+ PAN_NO                                             CHAR(10)
+ PHOTO                                              VARCHAR2(100)
+ SECURITY_QUES                                      VARCHAR2(75)
+ SECURITY_ANS                                       VARCHAR2(50)
+ EMAIL_VERIFIED                                     CHAR(3)
+ PASSWORD                                           VARCHAR2(30)
+ TYPE_OF_USER                                       VARCHAR2(10)
+
+SQL> desc auto_debit
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ AUTODEBIT_ID                              NOT NULL NUMBER(5)
+ USERNAME                                           VARCHAR2(20)
+ AMT_PER_INSTALLMENT                                NUMBER(10,2)
+ START_DATE                                         TIMESTAMP(6)
+ PAY_DATE                                           NUMBER
+ NO_OF_INSTALLMENTS                                 NUMBER(4)
+ ANY_COMMENT                                        VARCHAR2(100)
+ NAME                                               VARCHAR2(25)
+ AMOUNT_TO_BE_PAID                                  NUMBER(20,2)
+ AMOUNT_PAID                                        NUMBER(20,2)
+ TO_USERNAME                                        VARCHAR2(20)
+ DOWNPAYMENT                                        NUMBER
+ WARN_DATE                                          NUMBER
+ FEATURE                                            CHAR(3)
+ BY_CREDIT                                          CHAR(3)
+
+SQL> desc credit_enable_details
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ USERNAME                                  NOT NULL VARCHAR2(20)
+ SOURCES_OF_INCOME                                  VARCHAR2(10)
+ PROFESSION                                         VARCHAR2(20)
+ ANNUAL_INCOME                                      FLOAT(126)
+ SURETY                                             VARCHAR2(20)
+ VERIFIED                                           CHAR(3)
+
+SQL> desc credit_history
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ USERNAME                                           VARCHAR2(20)
+ CREDIT_AMT                                         NUMBER(10)
+ TIME_OF_TRANS                                      TIMESTAMP(6)
+ STATUS                                             VARCHAR2(20)
+ CREDIT_ID                                 NOT NULL NUMBER(6)
+
+SQL> desc details
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BANK_AC_NO                                NOT NULL NUMBER(10)
+ FIRST_NAME                                         VARCHAR2(25)
+ LAST_NAME                                          VARCHAR2(20)
+ DOB                                                DATE
+ ADDRESS                                            VARCHAR2(50)
+ EMAIL                                              VARCHAR2(40)
+ PHONE                                              VARCHAR2(15)
+ USERNAME                                           VARCHAR2(25)
+ PAN_NO                                             CHAR(10)
+ PHOTO                                              VARCHAR2(100)
+ BALANCE                                            NUMBER(10,2)
+ STATUS                                             CHAR(8)
+ CREDIT_ENABLED                                     CHAR(3)
+ CREDIT_LIMIT                                       NUMBER
+ CREDIT                                             NUMBER
+ APPLICATION_NO                                     NUMBER(10)
+
+SQL> desc request_edit_details
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ USERNAME                                           VARCHAR2(20)
+ DETAILS                                            VARCHAR2(30)
+ TIME_OF_TRANS                                      TIMESTAMP(6)
+ VALUE                                              VARCHAR2(40)
+
+SQL> desc security
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ USERNAME                                  NOT NULL VARCHAR2(20)
+ PASSWORD                                           VARCHAR2(20)
+ SECURITY_QUES                                      VARCHAR2(75)
+ SECURITY_ANS                                       VARCHAR2(50)
+ TYPE_OF_USER                                       VARCHAR2(20)
+
+SQL>
+
+
+

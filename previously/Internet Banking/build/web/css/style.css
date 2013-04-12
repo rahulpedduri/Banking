@@ -1,0 +1,240 @@
+/* 
+    Document   : newcss
+    Created on : Feb 5, 2012, 1:08:34 PM
+    Author     : Rahul
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+    position: relative;
+
+}
+
+body{
+    background: #AAC7ED;
+    font-family: "Comic Sans MS";
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+div.board
+{
+    background: white;
+    padding: 20px 40px;
+    margin: 0 auto;
+    text-align: left;
+    display: inline-block;
+    left: 10%;
+    position: relative;
+    width: 800px;
+    height: 310px;
+}
+h1{
+    padding: 40px;
+    font-family: "comic sans MS";
+    color: #ffffff;
+    text-transform: capitalize;
+}
+div#pic{
+    padding: 5px;
+    margin: 5px;
+    
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 490px;
+    top:50px;
+}
+div#pic img{
+    padding: 5px;
+    margin: 5px;
+    border: black solid thin;
+    width: 300px;  
+    top: 0px;
+    right: 0px;
+    top: 300px;
+}
+#navigator {
+position: absolute;
+display: block;
+width: 200px;
+right: 5px;
+top: 122px;
+}
+.block {
+display: block;
+color: white;
+padding: 5px 20px;
+margin: 2px;
+border: 1px solid #FFFFFF;
+text-align: left;
+text-decoration: none;
+font-family: "comic sans MS";
+font-weight: bold;
+}
+.block:hover
+{
+    background: white;
+    color: black;
+    
+}
+
+.block:hover .interleaved{
+    color: black;
+    background: white;
+}
+.interleaved:hover{
+    border: 1px black solid;
+}
+
+.interleaved {
+    padding: 2px 5px;
+display: block;
+padding: 1px;
+color: white;
+text-decoration: none;
+font-family: "comic sans MS";
+font-weight: bold;
+}
+.holder p,.edit {
+text-transform: capitalize;
+font-family: "comic sans MS";
+}
+h2 {
+font-family: "comic sans MS";
+font-size: xx-large;
+}
+.edit{
+    text-decoration: none;
+    color: blue;
+}
+#login label{
+    font-family: "comic sans MS";
+    font-size: larger;
+}
+label{
+    font-family: "comic sans MS";
+    text-transform: capitalize;
+    font-style: normal;
+    font-size: small;
+}
+input[type="text"]
+{
+width:150px;
+margin:5px;
+font-family: "comic sans MS";
+}
+input[type="password"] {
+margin: 5px;
+}
+select {
+margin: 5px;
+font-family: "Comic Sans MS";
+}
+tr {
+padding: 3px;
+text-align: center;
+background: #fefbfa;
+}
+td {
+padding: 5px;
+}
+th {
+background: beige;
+padding: 5px;
+}
+input[type="submit"]
+{
+font-family: "comic sans MS";
+text-decoration: none;
+color: white;
+background: #AAC7ED;
+display: inline-block;
+margin: 2px 3px;
+padding: 3px 10px;
+text-transform: capitalize;
+border: none;
+font-size: medium;
+}
+#login{
+    width: 300px;
+    margin: 30px;
+    padding: 30px;
+    margin-top: 10px;
+}
+#info{
+    display: block;
+    position: relative;
+    padding: 5px;
+    margin: 5px;
+    font-family: "comic sans MS";
+    background: white;
+    text-align: center;
+    z-index: 10;
+}
+.error{
+    color: #db4343;
+    display: block;
+}
+.result{
+    display: block;
+}
+.success{
+    color: #3499c6 ;
+}
+.failed{
+    color: #db4343;
+}
+div.holder{
+     background: white;
+    padding: 20px 40px;
+    margin: 0 auto;
+    text-align: left;
+    display: inline-block;
+    left: 10%;
+    position: relative;
+    width: 800px;
+    min-height: 350px;
+    overflow-x: auto;
+}
+a {
+font-family: "comic sans MS";
+text-decoration: none;
+color: white;
+background: #AAC7ED;
+display: inline-block;
+margin: 2px 3px;
+padding: 3px 10px;
+text-transform: capitalize;
+}
+a:hover,input[type="submit"]:hover
+{
+    color: black;
+}
+.detailBox{
+    margin: 10px;
+    padding: 10px;
+}
+.detailLine{
+    font-family: "comic sans MS";
+    text-transform: capitalize;
+}
+.note{
+    font-family: "comic sans MS";
+    color: #2a619e;
+    background: gainsboro;
+    padding: 10px;
+    margin: 5px;
+}
+hr{
+    margin: 10px;
+}
