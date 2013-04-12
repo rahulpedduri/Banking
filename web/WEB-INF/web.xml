@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>Transaction</servlet-name>
+        <servlet-class>com.nbad.bank.Transaction</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>com.nbad.bank.Welcome</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Transaction</servlet-name>
+        <url-pattern>/Transaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/Welcome</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+     <context-param>
+        <description>database driver</description>
+        <param-name>db.driver</param-name>
+        <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+    </context-param>
+    <context-param>
+        <description>url required to connect to database.</description>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:oracle:thin:@localhost:1521:</param-value>
+    </context-param>
+    <context-param>
+        <description>the database schema..</description>
+        <param-name>db.database</param-name>
+        <param-value>XE</param-value>
+    </context-param>
+    <context-param>
+        <description>username of the schema</description>
+        <param-name>db.username</param-name>
+        <param-value>nbad</param-value>
+    </context-param>
+    <context-param>
+        <description>password of the schema</description>
+        <param-name>db.password</param-name>
+        <param-value>tiger</param-value>
+    </context-param>
+</web-app>
