@@ -60,5 +60,14 @@ public class Database {
          int ret= ps.executeUpdate();
          return ret;
      }
+    
+     
+    @Override
+    protected void finalize() throws Throwable {
+         conn.close();
+         System.out.println("connection closed");
+        super.finalize();
+       
+    }
      
 }

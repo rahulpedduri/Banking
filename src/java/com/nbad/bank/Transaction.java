@@ -6,10 +6,16 @@ package com.nbad.bank;
 
 import com.nbad.bean.TransactionBean;
 import com.nbad.bean.TransactionRequest;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,20 +61,50 @@ public class Transaction extends HttpServlet {
                 TransactionBean t = new TransactionBean(account_number, getServletContext());
                 if (t.validateAccountDetails(account_number, account_holder_name, routing_number)) {
                     HttpSession session = request.getSession();
-                    TransactionRequest inst = (TransactionRequest) session.getAttribute("");
+                    TransactionRequest inst = (TransactionRequest) session.getAttribute("transaction_request");
                     double bill = inst.getBill();
                     if (t.getBalance() >= bill) {
                         t.setBalance(t.getBalance() - bill);
                         transactionStatus = SUCCESS;
+                        inst.setTransaction_status(transactionStatus);
                         String callback = inst.getCallback();
                         URL url = new URL(callback);
                         HttpURLConnection con = (HttpURLConnection) url.openConnection();
                         con.setRequestMethod("POST");
 
-                        con.setRequestProperty("username", inst.getUsername());
-                        con.setRequestProperty("bill", bill + "");
-                        con.setRequestProperty("client_id", inst.getClient_id());
-                        con.setRequestProperty("transaction_status", inst.isTransaction_status() + "");
+                        HashMap<String, Object> params = new HashMap();
+                        params.put("username", inst.getUsername());
+                        params.put("bill", inst.getBill());
+                        // params.put("client_id", inst.getClient_id());
+                        params.put("transaction_status", inst.isTransaction_status());
+                        params.put("session", inst.getSession());
+
+                        StringBuilder result = new StringBuilder();
+                        boolean first = true;
+                        Set<String> set = params.keySet();
+                        for (String key : set) {
+                            if (first) {
+                                first = false;
+                            } else {
+                                result.append("&");
+                            }
+                            result.append(URLEncoder.encode(key.toString(), "UTF-8"));
+                            result.append("=");
+                            result.append(URLEncoder.encode(params.get(key).toString(), "UTF-8"));
+                        }
+
+                        con.setDoOutput(true);
+                        OutputStream os = con.getOutputStream();
+                        BufferedWriter writer = new BufferedWriter(
+                                new OutputStreamWriter(os, "UTF-8"));
+                        writer.write(result.toString());
+                        writer.close();
+                        os.close();
+
+//                        con.setRequestProperty("username", inst.getUsername());
+//                        con.setRequestProperty("bill", bill + "");
+//                        con.setRequestProperty("client_id", inst.getClient_id());
+//                        con.setRequestProperty("transaction_status", inst.isTransaction_status() + "");
                         con.connect();
                         int statusCode = con.getResponseCode();
                         if (statusCode == HttpURLConnection.HTTP_OK) {
@@ -86,11 +122,16 @@ public class Transaction extends HttpServlet {
             }
             /*send window.close method as the response.
              and the json data to the callback url.*/
-            String resp = "<button type=button onclick=close>click to close</button>"
-                    + "<script type='text/javascript'>"
+            String resp = "<html><head><script type='text/javascript'>"
                     + "function close(){"
                     + "window.close();};"
-                    + "</script>";
+                    + "</script></head>"
+                    + "<body>"
+                    + "<button type=button onclick=close()>click to close</button>Transaction Failed"
+                    + "</body>"
+                    + "</html>";
+
+
             out.print(resp);
 
 

@@ -43,17 +43,20 @@ public class Welcome extends HttpServlet {
             String bill = request.getParameter("bill");
             String billDesc = request.getParameter("bill_description");
             String callback = request.getParameter("callback");
-            out.print("hello world");
+            String session_req = request.getParameter("session");
+//            out.print("hello world");
 
             if (bill != null && !bill.trim().equals("")
                     && username != null && !username.trim().equals("")
-                    && callback != null && !callback.trim().equals("")) {
+                    && callback != null && !callback.trim().equals("")
+                    && session_req != null && !session_req.trim().equals("")) {
                 HttpSession session = request.getSession();
                 
                 TransactionRequest req = new TransactionRequest();
                 req.setBill(Double.valueOf(bill));
                 req.setUsername(username);
-                req.setCallback(callback);            
+                req.setCallback(callback);  
+                req.setSession(session_req);
                 
                 if (merchantName != null && !merchantName.trim().equals("")) {
                     req.setMerchant_name(merchantName);                  

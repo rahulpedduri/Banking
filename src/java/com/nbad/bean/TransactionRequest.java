@@ -22,6 +22,7 @@ public class TransactionRequest {
     private String callback;
     private boolean transaction_status;
     private ArrayList fail_reasons;
+    private String session;
 
     public JSONObject getResponseInJSON() {
 
@@ -29,10 +30,14 @@ public class TransactionRequest {
         if (client_id != null && !client_id.trim().equals("")) {
             inst.put("client_id", client_id);
         }
+         if (session != null && !session.trim().equals("")) {
+            inst.put("session", session);
+        }
         if (bill > 0) {
             inst.put("bill", bill);
         }       
             inst.put("transaction_status", transaction_status);
+            
  
         if (fail_reasons != null && !fail_reasons.isEmpty()) {
             JSONArray reasons = new JSONArray();
@@ -48,6 +53,7 @@ public class TransactionRequest {
         fail_reasons = new ArrayList();        
     }
 
+    
     public String getClient_id() {
         return client_id;
     }
@@ -110,6 +116,14 @@ public class TransactionRequest {
 
     public void setFail_reasons(ArrayList fail_reasons) {
         this.fail_reasons = fail_reasons;
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
     }
     
 }
