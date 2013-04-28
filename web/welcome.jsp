@@ -12,7 +12,7 @@
         <title>Welcome.. </title>
     </head>
     <body>
-        <h1>Bill : ${bill}</h1>
+        <h1>Bill : ${sessionScope['transaction_request'].bill}</h1>
 
         <form name ="form" action="Transaction" method="POST">
             <div>
